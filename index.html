@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Between Synapses</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Georgia,serif;
+  background:#fff9f5;
+  color:#4a3b48;
+  display:flex;
+  justify-content:center;
+  padding:20px;
+}
+
+.wrap{max-width:700px;width:100%}
+
+header{text-align:center;padding:50px 0 20px}
+
+.site-title{
+  font-size:2.6rem;
+  color:#3d2e3c;
+  letter-spacing:1px;
+}
+
+.site-sub{
+  font-size:13px;
+  color:#9a8796;
+  margin-top:6px;
+}
+
+nav{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin:20px 0 30px;
+  flex-wrap:wrap;
+}
+
+.nav-btn{
+  padding:7px 16px;
+  border-radius:20px;
+  border:none;
+  background:transparent;
+  font-size:13px;
+  color:#6b5268;
+  cursor:pointer;
+  font-family:inherit;
+  transition:.2s;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+  background:#f2dce8;
+  color:#4a2f47;
+}
+
+.section{display:none}
+.section.on{display:block}
+
+.card{
+  background:#fff;
+  border-radius:18px;
+  padding:26px;
+  margin-bottom:18px;
+  border:1px solid #f0e4ea;
+}
+
+.tag{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  color:#a08898;
+  margin-bottom:10px;
+}
+
+.post-title{
+  font-size:1.6rem;
+  color:#3d2e3c;
+  margin-bottom:10px;
+}
+
+.post-excerpt{
+  font-size:15px;
+  line-height:1.8;
+  color:#5a4556;
+}
+
+.read-more{
+  display:inline-block;
+  margin-top:14px;
+  font-size:13px;
+  color:#7a5f7d;
+  cursor:pointer;
+  text-decoration:underline;
+}
+
+.cats{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+}
+
+.cat{
+  padding:8px 14px;
+  border-radius:16px;
+  font-size:12px;
+  background:#fff;
+  border:1px solid #edd5e4;
+  color:#6b5268;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.cat:hover{background:#f2dce8}
+
+.post-row{
+  padding:14px 0;
+  border-bottom:1px solid #f5eaf0;
+  cursor:pointer;
+  font-size:15px;
+  color:#4a3b48;
+  transition:.2s;
+}
+
+.post-row:hover{
+  color:#7a5f7d;
+  padding-left:6px;
+}
+
+.post-date{
+  font-size:12px;
+  color:#a08898;
+  margin-top:3px;
+}
+
+.back-btn{
+  margin-top:20px;
+  font-size:13px;
+  color:#7a5f7d;
+  cursor:pointer;
+  display:inline-block;
+}
+
+.back-btn:hover{text-decoration:underline}
+
+.post-body{
+  font-size:16px;
+  line-height:1.9;
+  color:#4d3f4c;
+}
+
+.post-body p{margin-bottom:14px}
+
+footer{
+  text-align:center;
+  padding:40px 0 20px;
+  font-size:13px;
+  color:#b09aad;
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <div class="site-title">Between Synapses</div>
+    <div class="site-sub">A tiny corner of the internet where neurons gossip.</div>
+  </header>
+
+  <nav>
+    <button class="nav-btn active" onclick="show('home',this)">Home</button>
+    <button class="nav-btn" onclick="show('blog',this)">Blog</button>
+    <button class="nav-btn" onclick="show('about',this)">About</button>
+  </nav>
+
+  <!-- HOME -->
+  <div id="home" class="section on">
+
+    <div class="card">
+      <div class="tag">Latest post</div>
+      <div class="post-title">First Blog</div>
+      <div class="post-excerpt">Dearest gentle readers, today marks the first day of this blog — though calling it a beginning feels slightly dishonest...</div>
+      <div class="read-more" onclick="show('post1',null)">Read more →</div>
+    </div>
+
+    <div class="card">
+      <div class="tag">Browse by category</div>
+      <div class="cats">
+        <div class="cat" onclick="filterAndShow('all')">All</div>
+        <div class="cat" onclick="filterAndShow('thoughts')">Thoughts</div>
+        <div class="cat" onclick="filterAndShow('essays')">Essays</div>
+        <div class="cat" onclick="filterAndShow('medicine')">Medicine</div>
+        <div class="cat" onclick="filterAndShow('art')">Art</div>
+        <div class="cat" onclick="filterAndShow('questions')">Questions</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BLOG -->
+  <div id="blog" class="section">
+    <div class="card">
+      <div style="font-size:1.2rem;font-weight:500;color:#3d2e3c;margin-bottom:16px">All Posts</div>
+
+      <div class="post-row" data-cat="thoughts" onclick="show('post1',null)">
+        First Blog
+        <div class="post-date">June 29, 2026</div>
+      </div>
+
+      <!-- TO ADD A NEW POST: copy the block above and paste it below.
+           Change the text, date, data-cat, and onclick to match your new post.
+           Then add a new <div id="postN"> section below the others. -->
+
+    </div>
+  </div>
+
+  <!-- POST 1 -->
+  <div id="post1" class="section">
+    <div class="card">
+      <div class="tag">Thoughts</div>
+      <div class="post-title">First Blog</div>
+      <div style="font-size:12px;color:#a08898;margin-bottom:18px">June 29, 2026</div>
+      <div class="post-body">
+        <p>Dearest gentle readers,</p>
+        <p>Today marks the first day of this blog — though calling it a "beginning" feels slightly dishonest, as if something has been carefully planned when in reality it is more like a quiet spill of thoughts finally finding a surface to land on.</p>
+        <p>I don't entirely know what this space will become. Maybe it will stay consistent, maybe it will fracture into fragments of ideas that don't always agree with each other. Maybe it will hold clarity on some days and nothing but noise on others. But I think that's the point — not to present something polished, but to let it exist while it is still forming.</p>
+        <p>There is something strange about starting something that will be seen by others. It makes you aware of your own thinking in a way that feels slightly invasive, like noticing your reflection mid-movement. Still, I wanted a place where thoughts don't have to be immediately useful or resolved. Just recorded. Just allowed.</p>
+        <p>So this is the first mark. Not a statement of who I am, or what this will be, but simply evidence that I started. That I wrote something down instead of letting it dissolve. And perhaps that is enough for today.</p>
+      </div>
+      <div class="back-btn" onclick="show('blog',null)">← Back to Blog</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" class="section">
+    <div class="card">
+      <div class="post-title" style="margin-bottom:16px">About</div>
+      <div class="post-body">
+        <p>This started because I had way too much free time and didn't know what to do with it, so I made this little space instead of letting my thoughts just disappear into scrolling.</p>
+        <p>I end up doing a bit of everything — writing, drawing, design, architecture, reading, programming. It doesn't feel separate in my head. It all kind of blends together anyway.</p>
+        <p>Medicine and surgery are what I keep coming back to. It is a steady pull toward structure, precision, and understanding what lies beneath the surface of human systems. Something about it feels clear to me, even when other things don't.</p>
+        <p>This isn't anything serious or final. Just a small corner of the internet where I put things I'm thinking about. It will probably keep changing as I do.</p>
+        <p>This is just a soft place where thoughts stay instead of disappearing.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>whatever finds its way between synapses</footer>
+
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  if (btn) {
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+}
+
+function filterAndShow(cat) {
+  show('blog', null);
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.post-row').forEach(p => {
+    p.style.display = (cat === 'all' || p.dataset.cat === cat) ? 'block' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>
